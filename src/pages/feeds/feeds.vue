@@ -2,6 +2,9 @@
   <div class="topline">
     <topline>
       <template #headline>
+        <div class="logo">
+          Gitogram /
+        </div>
         <div class="icon">
           <icon name="home" />
         </div>
