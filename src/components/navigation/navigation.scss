@@ -1,0 +1,19 @@
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  .avatar {
+    width: 36px;
+  }
+
+  .icon {
+    width: 24px;
+    color: #262626;
+    transition: all 0.2s linear;
+
+    &:hover {
+      color: #A6328D;
+    }
+  }
+}

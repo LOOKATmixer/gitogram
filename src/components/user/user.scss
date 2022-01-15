@@ -1,0 +1,19 @@
+.user {
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__avatar {
+    width: 44px;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.10000000149011612px;
+  }
+}

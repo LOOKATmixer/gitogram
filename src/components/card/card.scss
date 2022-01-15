@@ -1,0 +1,16 @@
+.card {
+  margin: 16px 0;
+  padding: 24px 20px;
+  background: #FFFFFF;
+  border: 1px solid #F1F1F1;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+
+  &__title_wrap {
+    margin-bottom: 16px;
+  }
+
+  &__description_wrap {
+    margin-bottom: 32px;
+  }
+}

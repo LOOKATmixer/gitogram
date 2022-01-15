@@ -11,6 +11,10 @@
   </div>
 </template>
 
-<style src="./topline.scss" lang="scss" scoped>
+<script>
+export default {
+  name: 'topline'
+}
+</script>
 
-</style>
+<style src="./topline.scss" lang="scss" scoped></style>

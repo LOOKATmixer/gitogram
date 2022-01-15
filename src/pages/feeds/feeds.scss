@@ -1,0 +1,15 @@
+.stories {
+  display: flex;
+  gap: 32px;
+}
+
+.posts {
+  &-container {
+    width: 980px;
+    margin: 32px auto 0;
+  }
+
+  &__item {
+    margin-bottom: 24px;
+  }
+}
