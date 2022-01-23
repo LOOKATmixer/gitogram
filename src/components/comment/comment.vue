@@ -13,13 +13,11 @@ export default {
   props: {
     username: {
       type: String,
-      required: true,
-      default: 'default username'
+      default: 'username'
     },
     text: {
       type: String,
-      required: true,
-      default: 'default text'
+      default: 'comment text'
     }
   }
 }

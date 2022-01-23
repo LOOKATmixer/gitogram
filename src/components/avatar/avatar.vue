@@ -6,10 +6,12 @@
 
 <script>
 export default {
+  name: 'avatar',
   props: {
     avatar: {
       type: String,
-      required: true
+      required: true,
+      default: 'https://picsum.photos/200/200'
     }
   }
 }

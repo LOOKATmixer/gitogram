@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { icon } from '@/icons'
+import icon from '../../icons/icon'
 
 export default {
   name: 'stats',

@@ -1,0 +1,38 @@
+.slide {
+  max-width: 374px;
+  width: 100%;
+  min-height: 668px;
+  border-radius: 8px;
+  background: #fff;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px 8px 12px;
+    background: rgba(0, 0, 0, 0.0001);
+  }
+
+  &__content {
+    height: 500px;
+    background: #fafafa;
+    overflow-y: scroll;
+    border-bottom: 1px solid #CACACA;
+    border-top: 1px solid #CACACA;
+    padding: 0 27px 0 18px;
+
+    color: #404040;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+
+  &__footer {
+    padding: 24px 52px 32px;
+    background: rgba(0, 0, 0, 0.0001);
+  }
+}
+
+

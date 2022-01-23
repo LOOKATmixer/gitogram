@@ -1,0 +1,24 @@
+.progress {
+  position: relative;
+  overflow: hidden;
+  background: rgba(49, 174, 84, 0.3);
+  border-radius: 10px;
+  height: 2px;
+
+  &.active {
+    .indicator {
+      width: 100%;
+    }
+  }
+}
+
+.indicator {
+  background: #31AE54;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 0;
+  transition: 5s;
+}

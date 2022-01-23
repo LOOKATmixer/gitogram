@@ -14,7 +14,7 @@
 
 <script>
 import { icon } from '../../icons'
-import avatar from '@/components/avatar/avatar'
+import avatar from '../../components/avatar/avatar'
 
 export default {
   name: 'navigation',

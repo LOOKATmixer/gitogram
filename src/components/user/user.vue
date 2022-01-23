@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import avatar from '@/components/avatar/avatar'
+import avatar from '../../components/avatar/avatar'
 
 export default {
   name: 'user',
@@ -17,9 +17,7 @@ export default {
   },
   props: {
     avatar: {
-      type: String,
-      required: true,
-      default: 'https://picsum.photos/200/200'
+      type: String
     },
     name: {
       type: String,

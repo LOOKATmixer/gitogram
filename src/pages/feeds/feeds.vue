@@ -7,10 +7,10 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories__item" v-for="story in stories" :key="story.id">
+          <li class="stories__item" v-for="item in items" :key="item.id">
             <story-user-item
-              :avatar="story.avatar"
-              :username="story.username"
+              :avatar="item.owner.avatar_url"
+              :username="item.owner.login"
               @click="handlePress(story.id)"
             />
           </li>
@@ -20,10 +20,22 @@
   </div>
   <div class="g-container posts-container">
     <ul class="posts__list">
-      <li v-for="(item, ndx) in 3" :key="ndx" class="posts__item">
-        <post>
+      <li v-for="item in items" :key="item.id" class="posts__item">
+        <post
+          :name="item.owner.login"
+          :avatar="item.owner.avatar_url"
+          :repo-id="item.id"
+          :issues="item.issues"
+          :repo="item.name"
+          :owner="item.owner.login"
+        >
           <template #card>
-            <card></card>
+            <card
+              :title="item.name"
+              :description="item.description || ''"
+              :stars="item.stargazers_count"
+              :forks="item.forks_count"
+            ></card>
           </template>
         </post>
       </li>
@@ -32,13 +44,15 @@
 </template>
 
 <script>
-import { topline } from '../../components/topline'
+import { topline } from '@/components/topline'
 import StoryUserItem from '@/components/storyUserItem/storyUserItem'
 import logo from '@/components/logo/logo'
 import navigation from '@/components/navigation/navigation'
 import post from '@/components/post/post'
 import card from '@/components/card/card'
-import stories from './data.json'
+import stories from '@/pages/feeds/data.json'
+
+import * as api from '@/api'
 
 export default {
   name: 'feeds',
@@ -52,12 +66,21 @@ export default {
   },
   data () {
     return {
-      stories
+      stories,
+      items: []
     }
   },
   methods: {
     handlePress () {
       console.log('click')
+    }
+  },
+  async created () {
+    try {
+      const { data } = await api.trendings.getTrendings()
+      this.items = data.items
+    } catch (error) {
+      console.log(error)
     }
   }
 }

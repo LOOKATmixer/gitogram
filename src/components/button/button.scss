@@ -1,0 +1,41 @@
+.button {
+  background: #31AE54;
+  border-radius: 5px;
+  max-width: 270px;
+  width: 100%;
+  padding: 11px 0;
+  transition: all 0.2s linear;
+
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: -0.15000000596046448px;
+  text-align: center;
+
+  &.green {
+    background: #31AE54;
+  }
+
+  &.green:hover {
+    background: #9E9E9E;
+  }
+
+  &.gray {
+    background: #9E9E9E;
+  }
+
+  &.hover-text:hover:after {
+    font-size: inherit;
+  }
+
+  &.hover-text::after {
+    content: attr(data-hover-text);
+    font-size: 0;
+  }
+
+  &.hover-text:hover &__text {
+    font-size: 0;
+  }
+}
