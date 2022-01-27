@@ -50,7 +50,6 @@ import logo from '@/components/logo/logo'
 import navigation from '@/components/navigation/navigation'
 import post from '@/components/post/post'
 import card from '@/components/card/card'
-import stories from '@/pages/feeds/data.json'
 
 import * as api from '@/api'
 
@@ -66,7 +65,6 @@ export default {
   },
   data () {
     return {
-      stories,
       items: []
     }
   },
