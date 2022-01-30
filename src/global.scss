@@ -19,6 +19,11 @@ body {
   }
 }
 
+pre {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 ul  {
   list-style: none;
   padding: 0;

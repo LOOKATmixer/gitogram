@@ -1,5 +1,5 @@
 <template>
-  <a class="logo" href="#!">
+  <a class="logo" href="#">
     <icon class="logo" name="logo"/>
   </a>
 </template>

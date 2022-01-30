@@ -1,0 +1,21 @@
+.preloader {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-top: 3px solid #31AE54;
+  border-right: 3px solid transparent;
+  border-left: 3px solid #31AE54;
+  border-bottom: 3px solid #31AE54;
+  background: transparent;
+  transform: rotate(-90deg);
+  transition: all 2s linear;
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

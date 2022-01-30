@@ -1,0 +1,42 @@
+.stories {
+  background: #000;
+  color: #fff;
+  width: 100vw;
+  min-height: 100vh;
+  padding-bottom: 80px;
+
+  .g-container {
+    padding-top: 48px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+  .logo {
+    color: #fff;
+  }
+
+  .icon {
+    width: 22.5px;
+    height: 22.5px;
+    color: #fff;
+    transition: all 0.2s linear;
+  }
+
+  &__content {
+    margin-top: 128px;
+  }
+}
+
+.close__btn {
+
+  :hover {
+    color: #A6328D;
+  }
+}
+
+

@@ -1,0 +1,18 @@
+.slide {
+  color: #292929;
+}
+
+.stories__list {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -187px;
+  transition: all 0.4s linear;
+}
+
+.stories__container {
+  height: 660px;
+  position: relative;
+  transition: all 0.4s linear;
+}

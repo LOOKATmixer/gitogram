@@ -1,9 +1,16 @@
 .slide {
-  max-width: 374px;
-  width: 100%;
+  position: relative;
+  width: 374px;
   min-height: 668px;
   border-radius: 8px;
   background: #fff;
+  transition: all 0.2s linear;
+  transform: scale(0.8);
+
+  &.active {
+    transform: scale(1);
+    z-index: 10;
+  }
 
   &__header {
     display: flex;
@@ -14,6 +21,7 @@
   }
 
   &__content {
+    position: relative;
     height: 500px;
     background: #fafafa;
     overflow-y: scroll;
@@ -23,10 +31,10 @@
 
     color: #404040;
     font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: 0px;
+
+    &_container {
+      margin: 18px 0;
+    }
   }
 
   &__footer {
@@ -34,5 +42,48 @@
     background: rgba(0, 0, 0, 0.0001);
   }
 }
+
+.preloader {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.btn {
+  position: absolute;
+  top: calc(50% - 42px);
+
+  padding: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #000;
+
+  &__next {
+    right: -62px;
+  }
+
+  &__prev {
+    left: -62px;
+    transform: rotate(180deg);
+  }
+
+  .icon {
+    color: #404040;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s linear;
+  }
+
+  &:hover .icon {
+    color: #31AE54;
+  }
+}
+
+
+
+
 
 

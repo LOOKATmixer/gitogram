@@ -2,7 +2,7 @@
   <div class="topline">
     <topline>
       <template #headline>
-        <logo/>
+        <logo class="logo" />
         <navigation/>
       </template>
       <template #content>
@@ -11,7 +11,7 @@
             <story-user-item
               :avatar="item.owner.avatar_url"
               :username="item.owner.login"
-              @click="handlePress(story.id)"
+              @click="$router.push({ name: 'Stories', params: { initialSlide: item.id } })"
             />
           </li>
         </ul>
