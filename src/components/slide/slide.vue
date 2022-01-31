@@ -1,7 +1,7 @@
 <template>
   <div class="slide" :class="{ active }">
     <div class="slide__header">
-      <Progress :active-line="active" @onFinish="$emit('onProgressFinish')" />
+      <Progress :active-line="active" @onFinish="active ? $emit('onProgressFinish') : ''"  />
       <User
         :name="data.username"
         :avatar="data.userAvatar"
@@ -55,6 +55,7 @@ export default {
   },
   props: {
     active: Boolean,
+    activeLine: Boolean,
     loading: Boolean,
     btnsShown: {
       type: Array,

@@ -2,16 +2,16 @@
   <div class="topline">
     <topline>
       <template #headline>
-        <logo class="logo" />
+        <logo class="logo"/>
         <navigation/>
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories__item" v-for="item in items" :key="item.id">
+          <li class="stories__item" v-for="{ id, owner } in items" :key="id"
+              @click="$router.push({ name: 'Stories', params: { initialSlide: id } })">
             <story-user-item
-              :avatar="item.owner.avatar_url"
-              :username="item.owner.login"
-              @click="$router.push({ name: 'Stories', params: { initialSlide: item.id } })"
+              :avatar="owner.avatar_url"
+              :username="owner.login"
             />
           </li>
         </ul>
@@ -69,9 +69,7 @@ export default {
     }
   },
   methods: {
-    handlePress () {
-      console.log('click')
-    }
+    handlePress () {}
   },
   async created () {
     try {

@@ -104,11 +104,11 @@ export default {
     }
   },
   async mounted () {
+    await this.fetchTrendings()
     if (this.initialSlide) {
       const ndx = this.trendings.findIndex((item) => item.id === this.initialSlide)
       await this.handleSlide(ndx)
     }
-    await this.fetchTrendings()
     await this.loadReadme()
   }
 }
