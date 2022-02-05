@@ -18,7 +18,7 @@
 
 <script>
 import logo from '../../components/logo/logo'
-import { icon } from '../../icons/'
+import icon from '../../icons/icon'
 import slider from '../../components/slider/slider'
 
 export default {

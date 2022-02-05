@@ -1,25 +1,30 @@
 <template>
-  <button :class="['button', theme, { 'hover-text': withHoverText }]" :data-hover-text="hoverText">
-  <span class="button__text">
-      <slot></slot>
-    </span>
+  <button :class="['button', theme == 'green' ? 'green' : 'grey', {loading, disabled}]">
+    <preloader v-if="loading" class="button__preloader"/>
+    <slot v-if="!loading"></slot>
   </button>
 </template>
 
 <script>
+import preloader from '../../components/preloader/preloader'
+
 export default {
   name: 'Button',
+  components: {
+    preloader
+  },
   props: {
-    hoverText: {
-      type: String
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     theme: {
-      type: String
-    }
-  },
-  computed: {
-    withHoverText () {
-      return this.hoverText?.length
+      type: String,
+      default: 'green'
     }
   }
 }

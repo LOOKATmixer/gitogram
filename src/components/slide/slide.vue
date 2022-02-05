@@ -17,7 +17,13 @@
       </div>
     </div>
     <div class="slide__footer">
-      <Button>Follow</Button>
+      <Button
+        :theme="data.following.status ? 'grey' : 'green'"
+        :loading="data.following.loading"
+        @click="$emit(data.following.status ? 'onUnFollow' : 'onFollow', data.id)"
+      >
+        {{ data.following.status ? 'Unfollow' : 'Follow' }}
+      </Button>
     </div>
     <template v-if="active">
       <button
@@ -70,7 +76,7 @@ export default {
       default: () => ({})
     }
   },
-  emits: ['onNextSlide', 'onPrevSlide', 'onProgressFinish']
+  emits: ['onNextSlide', 'onPrevSlide', 'onProgressFinish', 'onFollow', 'onUnfollow']
 }
 </script>
 

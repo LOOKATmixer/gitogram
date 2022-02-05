@@ -3,11 +3,12 @@
     <topline>
       <template #headline>
         <logo class="logo"/>
-        <navigation/>
+        <navigation :avatar="user.avatar_url"/>
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories__item" v-for="{ id, owner } in items" :key="id"
+          <li class="stories__item"
+              v-for="{ id, owner } in items" :key="id"
               @click="$router.push({ name: 'Stories', params: { initialSlide: id } })">
             <story-user-item
               :avatar="owner.avatar_url"
@@ -53,6 +54,8 @@ import card from '@/components/card/card'
 
 import * as api from '@/api'
 
+import { mapState, mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'feeds',
   components: {
@@ -68,10 +71,22 @@ export default {
       items: []
     }
   },
+  computed: {
+    ...mapState({
+      trendings: state => state.trendings,
+      user: state => state.user,
+      starred: state => state.starred
+    }),
+    ...mapGetters(['getUnstarredOnly'])
+  },
   methods: {
+    ...mapActions({
+      getUser: 'user/getUser'
+    }),
     handlePress () {}
   },
-  async created () {
+  async mounted () {
+    await this.getUser()
     try {
       const { data } = await api.trendings.getTrendings()
       this.items = data.items

@@ -1,0 +1,47 @@
+.auth {
+
+  &__description {
+    text-align: center;
+    margin: 0 auto 38px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 86px;
+
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__footer {
+    background: #fff;
+    z-index: -1;
+    box-shadow: 0px -0.3300000131px 0px 0px #3c3c434a;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: -0.0099999998px;
+    text-align: center;
+    color: #0006;
+    padding: 32px 0;
+    max-height: 84px;
+    margin-top: -32px;
+  }
+}
+
+.mark {
+  color: #fff;
+  width: 23px;
+  height: 23px;
+}
+
+.logo {
+  max-width: 200px;
+  margin: 10% auto 12px;
+}

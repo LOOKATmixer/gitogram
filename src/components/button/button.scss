@@ -4,7 +4,7 @@
   max-width: 270px;
   width: 100%;
   padding: 11px 0;
-  transition: all 0.2s linear;
+  transition: all 0.1s linear;
 
   color: #fff;
   font-size: 16px;
@@ -14,16 +14,38 @@
   letter-spacing: -0.15000000596046448px;
   text-align: center;
 
+  &:hover {
+    background: #2ea043;
+  }
+
   &.green {
     background: #31AE54;
   }
 
   &.green:hover {
+    background: #2ea043;
+  }
+
+  &.grey {
     background: #9E9E9E;
   }
 
-  &.gray {
+  &.grey:hover {
+    background: #2ea043;
+  }
+
+  &.loading {
     background: #9E9E9E;
+    cursor: wait;
+  }
+  &.loading:hover {
+    background: #9E9E9E;
+  }
+
+  &.disabled {
+    background: #9E9E9E;
+    pointer-events: none;
+    user-select: none;
   }
 
   &.hover-text:hover:after {
@@ -38,4 +60,15 @@
   &.hover-text:hover &__text {
     font-size: 0;
   }
+}
+
+.button__preloader {
+  color: #fff;
+  margin: 0 auto;
+  width: 22px;
+  height: 22px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid transparent;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
 }
