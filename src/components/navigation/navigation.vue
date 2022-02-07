@@ -1,14 +1,14 @@
 <template>
   <nav class="nav">
-    <a href="/" class="icon">
+    <button class="icon" @click="$router.push({ name: 'Main' })">
       <icon name="home"/>
-    </a>
-    <a href="/" class="avatar">
+    </button>
+    <button class="avatar">
       <avatar :avatar="avatar"/>
-    </a>
-    <a href="#!" class="icon">
+    </button>
+    <button class="icon" @click="logout">
       <icon name="logout"/>
-    </a>
+    </button>
   </nav>
 </template>
 
@@ -27,6 +27,13 @@ export default {
       type: String,
       required: true,
       default: 'https://picsum.photos/200/200'
+    }
+  },
+  methods: {
+    logout () {
+      localStorage.removeItem('token')
+      this.$router.replace({ name: 'Auth' })
+      window.location.reload()
     }
   }
 }

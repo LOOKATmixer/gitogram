@@ -8,7 +8,7 @@
       <template #content>
         <ul class="stories">
           <li class="stories__item"
-              v-for="{ id, owner } in items" :key="id"
+              v-for="{ id, owner } in trendings" :key="id"
               @click="$router.push({ name: 'Stories', params: { initialSlide: id } })">
             <story-user-item
               :avatar="owner.avatar_url"
@@ -21,7 +21,7 @@
   </div>
   <div class="g-container posts-container">
     <ul class="posts__list">
-      <li v-for="item in items" :key="item.id" class="posts__item">
+      <li v-for="item in starred" :key="item.id" class="posts__item">
         <post
           :name="item.owner.login"
           :avatar="item.owner.avatar_url"
@@ -29,6 +29,11 @@
           :issues="item.issues"
           :repo="item.name"
           :owner="item.owner.login"
+          :postDate="item.created_at"
+          @getIssues="getIssues({
+                id: item.id,
+                owner: item.owner.login,
+                repo: item.name })"
         >
           <template #card>
             <card
@@ -52,8 +57,6 @@ import navigation from '@/components/navigation/navigation'
 import post from '@/components/post/post'
 import card from '@/components/card/card'
 
-import * as api from '@/api'
-
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -73,26 +76,27 @@ export default {
   },
   computed: {
     ...mapState({
-      trendings: state => state.trendings,
-      user: state => state.user,
-      starred: state => state.starred
+      trendings: state => state.trendings.data,
+      user: state => state.user.data,
+      starred: state => state.starred.starred
     }),
     ...mapGetters(['getUnstarredOnly'])
   },
   methods: {
     ...mapActions({
-      getUser: 'user/getUser'
+      fetchTrendings: 'trendings/fetchTrendings',
+      getUser: 'user/getUser',
+      getStarred: 'starred/getStarred'
     }),
-    handlePress () {}
+    handlePress () {
+    }
+  },
+  async created () {
+    await this.getUser()
   },
   async mounted () {
-    await this.getUser()
-    try {
-      const { data } = await api.trendings.getTrendings()
-      this.items = data.items
-    } catch (error) {
-      console.log(error)
-    }
+    await this.fetchTrendings()
+    await this.getStarred()
   }
 }
 </script>

@@ -80,7 +80,9 @@ export default {
         commit('SET_FOLLOWING', {
           id,
           data: {
-            status: true
+            status: true,
+            loading: false,
+            theme: 'grey'
           }
         })
       } catch (e) {

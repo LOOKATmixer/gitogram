@@ -9,19 +9,19 @@
     <div class="toggler">
       <toggler @onToggle="toggleClick"/>
     </div>
-    <div v-if="has_issues=true">
-      <div v-if="showComment">
-        <ul class="post__comments comments_list">
-          <li class="comment__item" v-for="item in issues.data" :key="item">
-            <comment :username="item.user.login" :text="item.body"/>
-          </li>
-        </ul>
+    <div v-if="showComment">
+      <div v-if="issues.loading">
+        <Placeholder />
       </div>
+      <ul v-else-if="issues.length" class="post__comments comments_list">
+        <li class="comment__item" v-for="item in issues" :key="item.id">
+          <comment :username="item.user.login" :text="item.body"/>
+        </li>
+      </ul>
     </div>
-    <div v-else>No questions</div>
   </div>
   <div class="post__date">
-    15 JANUARY
+    {{ postDate }}
   </div>
 </template>
 
@@ -29,13 +29,23 @@
 import user from '../../components/user/user'
 import toggler from '../../components/toggler/toggler'
 import comment from '../../components/comment/comment'
+import Placeholder from '@/components/placeholder/placeholder'
+
+import { mapActions } from 'vuex'
 
 export default {
   name: 'post',
   components: {
+    Placeholder,
     user,
     toggler,
     comment
+  },
+  data () {
+    return {
+      showComment: false,
+      currentId: ''
+    }
   },
   props: {
     name: {
@@ -57,20 +67,32 @@ export default {
     },
     text: {
       type: String
-    }
-  },
-  data () {
-    return {
-      showComment: false
+    },
+    postDate: {
+      type: String
+    },
+    repoIs: {
+      type: Number
     }
   },
   methods: {
+    ...mapActions({
+      getIssues: 'starred/getIssues'
+    }),
     toggleClick (state) {
       this.showComment = state
+      if (this.showComment && !this.issues.length && this.repoId !== this.currentId) {
+        const params = {
+          owner: this.owner,
+          repo: this.repo,
+          repoId: this.repoId
+        }
+        this.currentId = this.repoId
+        this.getIssues(params)
+      }
     }
   }
 }
-
 </script>
 
 <style src="./post.scss" lang="scss" scoped></style>

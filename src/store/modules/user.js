@@ -10,7 +10,7 @@ export default {
   mutations: {
     SET_USER (state, payload) {
       if (payload) {
-        state.user = payload
+        state.data = payload
       }
     }
   },

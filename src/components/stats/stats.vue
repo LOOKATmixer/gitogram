@@ -1,13 +1,13 @@
 <template>
   <div class="stats">
-    <div class="stats__container stats__border-right">
+    <div class="stats__container button stats__border-right">
       <icon class="stats__icon" name="star"></icon>
       <div class="stats__name">Star</div>
     </div>
     <div class="stats__container stats__border-right">
       {{ stars }}
     </div>
-    <div class="stats__container stats__border-right">
+    <div class="stats__container button stats__border-right">
       <icon class="stats__icon" name="fork"></icon>
       <div class="stats__name">Fork</div>
     </div>

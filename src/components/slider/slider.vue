@@ -12,8 +12,8 @@
           @onNextSlide="handleSlide(ndx + 1)"
           @onPrevSlide="handleSlide(ndx - 1)"
           @onProgressFinish="handleSlide(ndx + 1)"
-          @onFollow="starRepo"
-          @onUnFollow="unStarRepo"
+          @onFollow="starRepo(trending.id)"
+          @onUnFollow="unStarRepo(trending.id)"
         />
       </li>
     </ul>
@@ -33,6 +33,7 @@ export default {
       type: Number
     }
   },
+  emits: ['goToMain'],
   data () {
     return {
       slideNdx: 0,
@@ -104,8 +105,12 @@ export default {
       }
     },
     async handleSlide (slideNdx) {
-      this.moveSlider(slideNdx)
-      await this.loadReadme()
+      if (slideNdx < this.trendings.length) {
+        this.moveSlider(slideNdx)
+        await this.loadReadme()
+      } else {
+        this.$emit('goToMain')
+      }
     }
   },
   async mounted () {
