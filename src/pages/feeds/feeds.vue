@@ -82,11 +82,13 @@ export default {
     }),
     ...mapGetters(['getUnstarredOnly'])
   },
+  emits: ['getIssues'],
   methods: {
     ...mapActions({
       fetchTrendings: 'trendings/fetchTrendings',
       getUser: 'user/getUser',
-      getStarred: 'starred/getStarred'
+      getStarred: 'starred/getStarred',
+      getIssues: 'starred/getIssues'
     }),
     handlePress () {
     }

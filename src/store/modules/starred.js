@@ -28,12 +28,12 @@ export default {
       }
     },
     async getIssues ({ commit }, {
-      repoId,
+      id,
       owner,
       repo
     }) {
       commit('SET_ISSUES', {
-        repoId,
+        id,
         data: { loading: true }
       })
       try {
@@ -42,14 +42,14 @@ export default {
           repo
         })
         commit('SET_ISSUES', {
-          repoId,
+          id,
           issues: data
         })
       } catch (error) {
         console.log(error)
       } finally {
         commit('SET_ISSUES', {
-          repoId,
+          id,
           data: { loading: false }
         })
       }

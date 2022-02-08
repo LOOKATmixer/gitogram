@@ -11,11 +11,11 @@
     </div>
     <div v-if="showComment">
       <div v-if="issues.loading">
-        <Placeholder />
+        <Placeholder :rows="1"/>
       </div>
       <ul v-else-if="issues.length" class="post__comments comments_list">
         <li class="comment__item" v-for="item in issues" :key="item.id">
-          <comment :username="item.user.login" :text="item.body"/>
+          <comment :username="item.user.login" :text="item.body" @loadIssues="$emit('getIssues')"/>
         </li>
       </ul>
     </div>
@@ -30,8 +30,6 @@ import user from '../../components/user/user'
 import toggler from '../../components/toggler/toggler'
 import comment from '../../components/comment/comment'
 import Placeholder from '@/components/placeholder/placeholder'
-
-import { mapActions } from 'vuex'
 
 export default {
   name: 'post',
@@ -75,21 +73,11 @@ export default {
       type: Number
     }
   },
+  emits: ['loadIssues'],
   methods: {
-    ...mapActions({
-      getIssues: 'starred/getIssues'
-    }),
     toggleClick (state) {
       this.showComment = state
-      if (this.showComment && !this.issues.length && this.repoId !== this.currentId) {
-        const params = {
-          owner: this.owner,
-          repo: this.repo,
-          repoId: this.repoId
-        }
-        this.currentId = this.repoId
-        this.getIssues(params)
-      }
+      this.$emit('loadIssues')
     }
   }
 }
