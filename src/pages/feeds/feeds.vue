@@ -25,10 +25,7 @@
         <post
           :name="item.owner.login"
           :avatar="item.owner.avatar_url"
-          :repo-id="item.id"
           :issues="item.issues"
-          :repo="item.name"
-          :owner="item.owner.login"
           :postDate="item.created_at"
           @getIssues="getIssues({
                 id: item.id,

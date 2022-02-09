@@ -27,15 +27,7 @@ export default {
         console.log(error)
       }
     },
-    async getIssues ({ commit }, {
-      id,
-      owner,
-      repo
-    }) {
-      commit('SET_ISSUES', {
-        id,
-        data: { loading: true }
-      })
+    async getIssues ({ commit }, { id, owner, repo }) {
       try {
         const { data } = await api.issues.getIssues({
           owner,
@@ -47,11 +39,6 @@ export default {
         })
       } catch (error) {
         console.log(error)
-      } finally {
-        commit('SET_ISSUES', {
-          id,
-          data: { loading: false }
-        })
       }
     }
   }
