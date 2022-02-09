@@ -3,7 +3,7 @@ import * as api from '../../api'
 export default {
   namespaced: true,
   state: {
-    starred: {}
+    starred: []
   },
   mutations: {
     SET_STARRED (state, payload) {

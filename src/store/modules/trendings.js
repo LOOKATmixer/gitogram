@@ -3,7 +3,7 @@ import * as api from '../../api'
 export default {
   namespaced: true,
   state: {
-    data: {},
+    data: [],
     loading: false,
     error: false
   },

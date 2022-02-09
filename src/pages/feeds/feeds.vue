@@ -8,7 +8,7 @@
       <template #content>
         <ul class="stories">
           <li class="stories__item"
-              v-for="{ id, owner } in trendings" :key="id"
+              v-for="{ id, owner } in getUnstarredOnly" :key="id"
               @click="$router.push({ name: 'Stories', params: { initialSlide: id } })">
             <story-user-item
               :avatar="owner.avatar_url"
